@@ -3,7 +3,7 @@ import Hero from '@/components/Hero';
 import KittenGrid from '@/components/KittenGrid';
 import AboutSection from '@/components/AboutSection';
 import FacebookFeed from '@/components/FacebookFeed';
-import ReviewSection from '@/components/ReviewSection';
+import ReviewsSection from '@/components/ReviewsSection';
 import InquiryForm from '@/components/InquiryForm';
 import Footer from '@/components/Footer';
 import ChatWidget from '@/components/ChatWidget';
