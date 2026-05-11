@@ -41,7 +41,7 @@ export default async function Home() {
       </section>
       <AboutSection profile={profile} />
       <FacebookFeed />
-      <ReviewSection />
+     <ReviewsSection />
       <section id="contact" className="py-24 bg-navy-light">
         <div className="max-w-3xl mx-auto px-4">
           <div className="text-center mb-12">
