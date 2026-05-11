@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --gold: #D4AF37;
+  --gold-light: #F5E6A3;
+  --navy: #0D0D1A;
+  --navy-light: #1a1a2e;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: #e8e0d0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(212,175,55,0); }
+}
+
+.fade-up { animation: fadeUp 0.6s ease forwards; }
+.gold-shimmer {
+  background: linear-gradient(90deg, #D4AF37, #F5E6A3, #D4AF37);
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.pulse-gold { animation: pulse-gold 2s infinite; }
+
+.glass {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212,175,55,0.15);
+}
