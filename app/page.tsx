@@ -2,57 +2,55 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import KittenGrid from '@/components/KittenGrid';
 import AboutSection from '@/components/AboutSection';
+import GallerySection from '@/components/GallerySection';
 import FacebookFeed from '@/components/FacebookFeed';
-import ReviewSection from '@/components/ReviewSection';
+import ReviewsSection from '@/components/ReviewsSection';
 import InquiryForm from '@/components/InquiryForm';
 import Footer from '@/components/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
 import ChatWidget from '@/components/ChatWidget';
 import { supabaseAdmin } from '@/lib/supabaseAdmin';
-import { Kitten, AdminProfile } from '@/types';
 
 export const revalidate = 60;
 
-async function getData() {
-  const [kittensRes, profileRes] = await Promise.all([
-    supabaseAdmin.from('kittens').select('*').order('created_at', { ascending: false }),
-    supabaseAdmin.from('admin_profile').select('*').single(),
-  ]);
-  return {
-    kittens: (kittensRes.data || []) as Kitten[],
-    profile: (profileRes.data || { full_name: 'Maine Coon Royale', tagline: 'Premium Home-Bred Maine Coon Kittens', bio: '', location: 'USA', years_breeding: 1, kittens_placed: 0 }) as AdminProfile,
-  };
+async function getKittens() {
+  try {
+    const { data } = await supabaseAdmin
+      .from('kittens')
+      .select('*')
+      .order('created_at', { ascending: false });
+    return data || [];
+  } catch { return []; }
 }
 
 export default async function Home() {
-  const { kittens, profile } = await getData();
+  const kittens = await getKittens();
   return (
     <main className="min-h-screen bg-navy">
       <Navbar />
       <Hero />
-      <section id="kittens" className="py-24 bg-navy">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-gold/10 border border-gold/20 text-gold text-xs px-4 py-2 rounded-full mb-4 tracking-widest uppercase">✦ Available Now</div>
-            <h2 className="font-display text-5xl font-semibold text-white mb-4">Our Kittens</h2>
-            <p className="text-gray-400 max-w-xl mx-auto">Every kitten is health-tested, vaccinated, and raised with love in our family home.</p>
-          </div>
-          <KittenGrid kittens={kittens} />
+      <section id="kittens" className="py-20 px-4 max-w-7xl mx-auto">
+        <div className="text-center mb-14">
+          <h2 className="font-display text-4xl md:text-5xl font-semibold text-white mb-4">Available Kittens</h2>
+          <p className="text-gray-400 max-w-xl mx-auto">Each kitten is health-tested, vaccinated, and raised in our home with love.</p>
         </div>
+        <KittenGrid kittens={kittens} />
       </section>
-      <AboutSection profile={profile} />
+      <AboutSection />
+      <GallerySection />
       <FacebookFeed />
-     <ReviewsSection />
-      <section id="contact" className="py-24 bg-navy-light">
-        <div className="max-w-3xl mx-auto px-4">
+      <ReviewsSection />
+      <section id="contact" className="py-20 px-4 bg-navy-light">
+        <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-gold/10 border border-gold/20 text-gold text-xs px-4 py-2 rounded-full mb-4 tracking-widest uppercase">✦ Get In Touch</div>
-            <h2 className="font-display text-5xl font-semibold text-white mb-4">Inquire Today</h2>
-            <p className="text-gray-400">Interested in a kitten or want to join our waiting list? We'd love to hear from you.</p>
+            <h2 className="font-display text-4xl md:text-5xl font-semibold text-white mb-4">Get in Touch</h2>
+            <p className="text-gray-400">Interested in one of our kittens? We would love to hear from you.</p>
           </div>
           <InquiryForm />
         </div>
       </section>
-      <Footer profile={profile} />
+      <Footer />
+      <WhatsAppButton />
       <ChatWidget />
     </main>
   );
