@@ -52,7 +52,7 @@ export default function GalleryPage() {
           </div>
         )}
       </div>
-      <Footer />
+    <Footer profile={null} />
       {selected && (
         <div
           className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
