@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Crown, Instagram, Facebook } from 'lucide-react';
 import { AdminProfile } from '@/types';
 
-export default function Footer({ profile }: { profile: AdminProfile }) {
+export default function Footer({ profile }: { profile?: any }) {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-black/40 border-t border-white/5">
