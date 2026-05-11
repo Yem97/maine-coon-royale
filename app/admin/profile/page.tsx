@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
-import { AdminProfile } from '@/types';
+import type { AdminProfile } from '@/types';
 import { Upload, Loader2, CheckCircle, User } from 'lucide-react';
 
 export default function AdminProfile() {
