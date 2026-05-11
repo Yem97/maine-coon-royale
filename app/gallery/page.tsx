@@ -25,7 +25,7 @@ export default function GalleryPage() {
             <ArrowLeft size={16} /> Back to home
           </Link>
           <h1 className="font-display text-5xl font-semibold text-white mb-4">Royal Gallery</h1>
-          <p className="text-gray-400">Life at Maine Coon Royale — our kittens, our home, our families.</p>
+          <p className="text-gray-400">Life at Maine Coon Royale.</p>
         </div>
         {photos.length === 0 ? (
           <div className="text-center py-20 text-gray-500">
@@ -45,13 +45,8 @@ export default function GalleryPage() {
                   alt={photo.title || ''}
                   width={400}
                   height={300}
-                  className="w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full object-cover"
                 />
-                {photo.title && (
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                    <p className="text-white text-sm">{photo.title}</p>
-                  </div>
-                )}
               </div>
             ))}
           </div>
