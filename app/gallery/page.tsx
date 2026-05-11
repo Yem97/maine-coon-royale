@@ -1,6 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import GalleryGrid from '@/components/GalleryGrid';
+import GallerySection from '@/components/GallerySection';
 import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import { GalleryPhoto, AdminProfile } from '@/types';
 
